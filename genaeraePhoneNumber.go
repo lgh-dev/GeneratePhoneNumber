@@ -18,7 +18,7 @@ func main() {
 	}
 	f, err := os.OpenFile(path, os.O_WRONLY, 0644)
 	defer f.Close()
-	startTime := time.Now().Unix()
+	startTime := time.Now().UnixNano()
 	var c int32 = 20000000
 	var msg string
 	n := int64(0)
@@ -41,8 +41,8 @@ func main() {
 			msg = ""
 		}
 	}
-	endTime := time.Now().Unix()
-	fmt.Printf("完成耗时:%d秒", endTime-startTime)
+	endTime := time.Now().UnixNano()
+	fmt.Printf("完成耗时:%d毫秒", (endTime-startTime)/1000000)
 	//err := ioutil.WriteFile(path, message, 0644)
 	//if err != nil {
 	//	fmt.Printf("生成错误",err)
